@@ -25,7 +25,7 @@ fi
 
 if test "${#script_args[@]}" == 0; then
     printf -- \
-        'Usage: %s _input_file1_ _input_file2_... > _output_file_\n' \
+        'Usage: %s _input_file1_ _input_file2_... > output.mkv\n' \
         "${script_basecommand}" \
         1>&2
     exit 0
