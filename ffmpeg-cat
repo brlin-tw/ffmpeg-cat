@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+# Concatenate media files by FFmpeg using cat-like syntax
+set -eu
+
+FFCAT_DROP_SRC_FILES="${FFCAT_DROP_SRC_FILES:-false}"
+
+if ! test -v BASH_SOURCE; then
+    printf -- \
+        'Error: This program does not support running from stdin.\n' \
+        1>&2
+    exit 1
+fi
+
+# Convenience variables
+# shellcheck disable=SC2034
+{
+    script="${BASH_SOURCE[0]}"
+    script="$(realpath "${script}")"
+    script_filename="${script##*/}"
+    script_name="${script_filename%%.*}"
+    script_dir="${script%%/*}"
+    script_args=("${@}")
+    script_basecommand="${0}"
+}
+
+if test "${#script_args[@]}" == 0; then
+    printf -- \
+        'Usage: %s _input_file1_ _input_file2_... > _output_file_\n' \
+        "${script_basecommand}" \
+        1>&2
+    exit 0
+fi
+
+if ! input_list="$(
+    mktemp \
+        --tmpdir \
+        "${script_name}.XXXXXX"
+    )"; then
+    printf -- \
+        '%s: Error: Unable to create temporary file.\n' \
+        "${script_name}" \
+        1>&2
+    exit 2
+fi
+
+trap_exit(){
+    if test -v input_list; then
+        rm \
+            --force \
+            "${input_list}"
+    fi
+}
+trap trap_exit EXIT
+
+printf -- \
+    '%s: Info: Generating input list...\n' \
+    "${script_name}" \
+    1>&2
+
+input_files=("${script_args[@]}")
+for input_file in "${input_files[@]}"; do
+    printf "file '%s'\\n" "${input_file}" >> "${input_list}"
+done
+
+printf -- \
+    '%s: Info: Start conversion...\n' \
+    "${script_name}" \
+    1>&2
+ffmpeg_args=(
+    # Use concat demuxer
+    -f concat
+
+    # Don't consider absolute path as unsafe
+    -safe 0
+
+    # Input list
+    -i "${input_list}"
+
+    # Copy stream codec
+    -c copy
+
+    # Output as MKV file
+    -f matroska
+
+    # Send output to `stdout` instead of file
+    pipe:1
+)
+if ! \
+    ffmpeg \
+        "${ffmpeg_args[@]}"; then
+    printf -- \
+        '%s: Error: Conversion failed.\n' \
+        "${script_name}" \
+        1>&2
+    exit 3
+fi
+
+if test "${FFCAT_DROP_SRC_FILES}" == true; then
+    printf -- \
+        '%s: Info: Removing source files.\n' \
+        "${script_name}" \
+        1>&2
+    rm \
+        --verbose \
+        "${input_files[@]}"
+fi
+
+printf -- \
+    '%s: Info: Operation completed without errors.\n' \
+    "${script_name}" \
+    1>&2

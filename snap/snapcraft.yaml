@@ -1,0 +1,39 @@
+name: ffmpeg-cat
+base: core22
+version: git
+summary: Concatenate multiple video files using the familiar `cat` syntax
+description: |
+  This utility concatenates multiple video files using the familiar
+  `cat` command syntax.  It is designed to make concatenation of
+  splitted similar spec files(e.g. dash cam recordings) easier for
+  regular users that don't want other fancy features.
+
+  Common usage example:
+
+      ffmpeg-cat _input_file1_ _input_file2_... > output.mkv
+
+grade: stable
+confinement: strict
+
+parts:
+  ffmpeg-cat:
+    source: .
+    plugin: dump
+    organize:
+      ffmpeg-cat: bin/ffmpeg-cat
+
+  ffmpeg:
+    plugin: nil
+    stage-snaps:
+      - ffmpeg
+
+apps:
+  ffmpeg-cat:
+    command: bin/ffmpeg-cat
+    environment:
+      # Avoid default PATHS which prefers unusable FFmpeg program
+      PATH: $SNAP/bin:$PATH
+
+plugs:
+  home:
+  removable-media:
