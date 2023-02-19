@@ -72,11 +72,15 @@ donation: https://github.com/brlin-tw/ffmpeg-cat/issues/new?labels=sponsorship
 
 # Only on architectures that the FFmpeg snap is available...
 # https://snapcraft.io/ffmpeg
-architectures:
-  - amd64
-  - arm64
-  - armhf
-  - ppc64el
+# DISABLED: Doesn't seem to work for some reason
+# Bug #2007790 “core22: Only amd64 snap is built when multiple arc...”
+# : Bugs : Snapcraft
+# https://bugs.launchpad.net/snapcraft/+bug/2007790
+#architectures:
+  #- amd64
+  #- arm64
+  #- armhf
+  #- ppc64el
 
 parts:
   ffmpeg-cat:
