@@ -1,5 +1,5 @@
 name: ffmpeg-cat
-title: The `ffmpeg-cat` media concatenation utility
+title: The `ffmpeg-cat` media concat. utility
 base: core22
 version: git
 summary: Concatenate multiple video files using the familiar `cat` syntax
