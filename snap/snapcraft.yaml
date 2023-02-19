@@ -72,6 +72,27 @@ parts:
     plugin: nil
     stage-snaps:
       - ffmpeg
+    prime:
+      # Trim out files that are not used in runtime
+      - -bin/ffp*
+      - -etc
+      - -usr/bin/ffp*
+      - -usr/bin/glxdemo
+      - -usr/bin/glxgears
+      - -usr/bin/glxheads
+      - -usr/bin/lcf
+      - -usr/bin/ucf*
+      - -usr/bin/X11
+      - -usr/include/
+      - -usr/lib/pkgconfig/
+      - -usr/share/bug/
+      - -usr/share/doc/*/changelog*
+      - -usr/share/doc/*/TODO*
+      - -usr/share/doc/*/NEWS*
+      - -usr/share/doc/*/AUTHORS*
+      - -usr/share/lintian/
+      - -usr/share/man/
+      - -usr/share/X11/
 
 apps:
   ffmpeg-cat:
