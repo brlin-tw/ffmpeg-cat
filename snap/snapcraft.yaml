@@ -73,14 +73,10 @@ donation: https://github.com/brlin-tw/ffmpeg-cat/issues/new?labels=sponsorship
 # Only on architectures that the FFmpeg snap is available...
 # https://snapcraft.io/ffmpeg
 architectures:
-  - build-on: amd64
-    build-for: amd64
-  - build-on: arm64
-    build-for: arm64
-  - build-on: armhf
-    build-for: armhf
-  - build-on: ppc64el
-    build-for: ppc64el
+  - amd64
+  - arm64
+  - armhf
+  - ppc64el
 
 parts:
   ffmpeg-cat:
