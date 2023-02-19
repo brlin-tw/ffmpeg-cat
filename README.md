@@ -79,4 +79,4 @@ This software is licensed under [the Creative Commons
 Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
 
 Specialized, case-by-case licensing is also possible but may incurr a
-price, please file an issue for discussion.
+fee, please file an issue for discussion.
