@@ -53,6 +53,14 @@ kind of video/audio streams it can encapsulate.  Support for other
 media container formats can be implemented if there's significant
 need for the feature.
 
+## Support
+
+Refer the issue tracker for limited, community-based support:
+
+<https://github.com/brlin-tw/ffmpeg-cat/issues>
+
+Patches are welcome if you have the ability to fix it yourself.
+
 ## Licensing
 
 This software is licensed under [the Creative Commons
