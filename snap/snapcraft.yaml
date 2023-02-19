@@ -61,6 +61,14 @@ contact: https://github.com/brlin-tw/ffmpeg-cat/issues
 issues: https://github.com/brlin-tw/ffmpeg-cat/issues
 donation: https://github.com/brlin-tw/ffmpeg-cat/issues/new?labels=sponsorship
 
+# Only on architectures that the FFmpeg snap is available...
+# https://snapcraft.io/ffmpeg
+architectures:
+  - amd64
+  - arm64
+  - armhf
+  - ppc64el
+
 parts:
   ffmpeg-cat:
     source: .
