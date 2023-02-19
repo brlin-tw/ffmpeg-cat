@@ -55,6 +55,16 @@ kind of video/audio streams it can encapsulate.  Support for other
 media container formats can be implemented if there's significant
 need for the feature.
 
+### Environment variables that can customize the program's behavior
+
+#### FFCAT_DROP_SRC_FILES
+
+Whether to automatically remove the input files after a successful
+conversion.
+
+**Default value:** `false`  
+**Supported values:** `false`, `true`
+
 ## Support
 
 Refer the issue tracker for limited, community-based support:
