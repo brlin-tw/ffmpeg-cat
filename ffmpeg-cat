@@ -18,7 +18,7 @@ fi
     script="$(realpath "${script}")"
     script_filename="${script##*/}"
     script_name="${script_filename%%.*}"
-    script_dir="${script%%/*}"
+    script_dir="${script%/*}"
     script_args=("${@}")
     script_basecommand="${0}"
 }
