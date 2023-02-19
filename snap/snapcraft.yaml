@@ -19,6 +19,8 @@ description: |
 
   **Usage**
 
+  This is a text-based program which should be run in a text terminal.
+
   Common usage example:
 
       ffmpeg-cat _input_file1_ _input_file2_... > output.mkv

@@ -38,6 +38,8 @@ sudo snap connect ffmpeg-cat:removable-media
 
 ## Usage
 
+This is a text-based program which should be run in a text terminal.
+
 Common usage example(assuming that the program lives in your command
 search PATHs):
 
