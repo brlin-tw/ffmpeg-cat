@@ -85,3 +85,6 @@
 
 # Ignore built snap packages
 *.snap
+
+# Ignore log files downloaded by `snapcraft remote-build`
+/ffmpeg-cat_*.txt
