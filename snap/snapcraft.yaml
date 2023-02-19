@@ -55,6 +55,11 @@ description: |
 grade: stable
 confinement: strict
 compression: lzo
+license: CC-BY-SA-4.0
+website: https://github.com/brlin-tw/ffmpeg-cat
+contact: https://github.com/brlin-tw/ffmpeg-cat/issues
+issues: https://github.com/brlin-tw/ffmpeg-cat/issues
+donation: https://github.com/brlin-tw/ffmpeg-cat/issues/new?labels=sponsorship
 
 parts:
   ffmpeg-cat:
