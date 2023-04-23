@@ -59,6 +59,7 @@ printf -- \
 
 input_files=("${script_args[@]}")
 for input_file in "${input_files[@]}"; do
+    input_file="$(realpath "${input_file}")"
     printf "file '%s'\\n" "${input_file}" >> "${input_list}"
 done
 
