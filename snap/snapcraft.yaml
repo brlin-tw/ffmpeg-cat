@@ -88,6 +88,8 @@ parts:
       "${CRAFT_PROJECT_DIR}/snap/local/scriptlets/main-adopt-info"
 
     plugin: dump
+    stage:
+      - bin/ffmpeg-cat
     organize:
       ffmpeg-cat: bin/ffmpeg-cat
 
