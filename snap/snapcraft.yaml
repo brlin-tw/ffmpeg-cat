@@ -90,8 +90,10 @@ parts:
     plugin: dump
     stage:
       - bin/ffmpeg-cat
+      - bin/fix-duration
     organize:
       ffmpeg-cat: bin/ffmpeg-cat
+      fix-duration: bin/fix-duration
 
   ffmpeg:
     plugin: nil
@@ -122,6 +124,12 @@ parts:
 apps:
   ffmpeg-cat:
     command: bin/ffmpeg-cat
+    environment:
+      # Avoid default PATHS which prefers unusable FFmpeg program
+      PATH: $SNAP/bin:$PATH
+
+  fix-duration:
+    command: bin/fix-duration
     environment:
       # Avoid default PATHS which prefers unusable FFmpeg program
       PATH: $SNAP/bin:$PATH
