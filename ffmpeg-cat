@@ -68,6 +68,9 @@ printf -- \
     "${script_name}" \
     1>&2
 ffmpeg_args=(
+    # Be less verbose
+    -hide_banner
+
     # Use concat demuxer
     -f concat
 
