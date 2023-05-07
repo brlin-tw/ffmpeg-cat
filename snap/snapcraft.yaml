@@ -85,7 +85,7 @@ donation: https://github.com/brlin-tw/ffmpeg-cat/issues/new?labels=sponsorship
 
 parts:
   ffmpeg-cat:
-    source: https://github.com/brlin-tw/ffmpeg-cat.git
+    source: .
     override-pull: |
       set -o nounset
       craftctl default
